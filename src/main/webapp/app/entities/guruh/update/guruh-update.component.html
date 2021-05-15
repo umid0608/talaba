@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-guruh-heading" data-cy="GuruhCreateUpdateHeading" jhiTranslate="talabaApp.guruh.home.createOrEditLabel">
+        Create or edit a Guruh
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.guruh.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+          <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.guruh.yil" for="field_yil">Yil</label>
+          <input type="number" class="form-control" name="yil" id="field_yil" data-cy="yil" formControlName="yil" />
+          <div *ngIf="editForm.get('yil')!.invalid && (editForm.get('yil')!.dirty || editForm.get('yil')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('yil')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('yil')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.guruh.yunalish" for="field_yunalish">Yunalish</label>
+          <select class="form-control" id="field_yunalish" data-cy="yunalish" name="yunalish" formControlName="yunalish">
+            <option *ngIf="!editForm.get('yunalish')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="yunalishOption.id === editForm.get('yunalish')!.value?.id ? editForm.get('yunalish')!.value : yunalishOption"
+              *ngFor="let yunalishOption of yunalishesSharedCollection; trackBy: trackYunalishById"
+            >
+              {{ yunalishOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['yunalish'])!.invalid && (editForm.get(['yunalish'])!.dirty || editForm.get(['yunalish'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['yunalish'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

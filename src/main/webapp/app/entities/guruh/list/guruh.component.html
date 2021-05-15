@@ -1,0 +1,76 @@
+<div>
+  <h2 id="page-heading" data-cy="GuruhHeading">
+    <span jhiTranslate="talabaApp.guruh.home.title">Guruhs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="talabaApp.guruh.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-guruh"
+        [routerLink]="['/guruh/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="talabaApp.guruh.home.createLabel"> Create a new Guruh </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="guruhs?.length === 0">
+    <span jhiTranslate="talabaApp.guruh.home.notFound">No guruhs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="guruhs && guruhs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="talabaApp.guruh.nom">Nom</span></th>
+          <th scope="col"><span jhiTranslate="talabaApp.guruh.yil">Yil</span></th>
+          <th scope="col"><span jhiTranslate="talabaApp.guruh.yunalish">Yunalish</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guruh of guruhs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/guruh', guruh.id, 'view']">{{ guruh.id }}</a>
+          </td>
+          <td>{{ guruh.nom }}</td>
+          <td>{{ guruh.yil }}</td>
+          <td>
+            <div *ngIf="guruh.yunalish">
+              <a [routerLink]="['/yunalish', guruh.yunalish?.id, 'view']">{{ guruh.yunalish?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/guruh', guruh.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/guruh', guruh.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(guruh)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

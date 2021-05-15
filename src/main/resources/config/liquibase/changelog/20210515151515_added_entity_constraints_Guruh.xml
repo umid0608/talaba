@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Guruh.
+    -->
+    <changeSet id="20210515151515-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="yunalish_id"
+                                 baseTableName="guruh"
+                                 constraintName="fk_guruh__yunalish_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="yunalish"/>
+    </changeSet>
+</databaseChangeLog>

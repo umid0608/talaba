@@ -1,0 +1,25 @@
+{
+  "talabaApp": {
+    "yunalish": {
+      "home": {
+        "title": "Yunalishes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Yunalish qo`shish",
+        "createOrEditLabel": "Yunalishni tahrirlash",
+        "notFound": "No Yunalishes found"
+      },
+      "created": "Yunalish {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Yunalish saqlandi",
+      "deleted": "{{ param }}- Yunalish o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Yunalishni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Yunalish"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "kod": "Kod"
+    }
+  }
+}
