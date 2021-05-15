@@ -1,0 +1,28 @@
+{
+  "talabaApp": {
+    "talaba": {
+      "home": {
+        "title": "Talabas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Янги Talaba қўшиш",
+        "createOrEditLabel": "Talabaни таҳрирлаш",
+        "notFound": "No Talabas found"
+      },
+      "created": "Talaba {{ param }} билан қўшилди.",
+      "updated": "{{ param }}- Talaba сақланди.",
+      "deleted": "{{ param }}- Talaba ўчирилди.",
+      "delete": {
+        "question": "{{ id }}- Talabaни ўчирмоқчимисиз? "
+      },
+      "detail": {
+        "title": "Talaba"
+      },
+      "id": "ID",
+      "ism": "Ism",
+      "familiya": "Familiya",
+      "sharif": "Sharif",
+      "tugilganKun": "Tugilgan Kun",
+      "guruh": "Guruh"
+    }
+  }
+}

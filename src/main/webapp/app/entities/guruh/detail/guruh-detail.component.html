@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="guruh">
+      <h2 data-cy="guruhDetailsHeading"><span jhiTranslate="talabaApp.guruh.detail.title">Guruh</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ guruh.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.guruh.nom">Nom</span></dt>
+        <dd>
+          <span>{{ guruh.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.guruh.yil">Yil</span></dt>
+        <dd>
+          <span>{{ guruh.yil }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.guruh.yunalish">Yunalish</span></dt>
+        <dd>
+          <div *ngIf="guruh.yunalish">
+            <a [routerLink]="['/yunalish', guruh.yunalish?.id, 'view']">{{ guruh.yunalish?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/guruh', guruh.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

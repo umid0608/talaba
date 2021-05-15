@@ -1,0 +1,26 @@
+{
+  "talabaApp": {
+    "guruh": {
+      "home": {
+        "title": "Guruhs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Guruh qo`shish",
+        "createOrEditLabel": "Guruhni tahrirlash",
+        "notFound": "No Guruhs found"
+      },
+      "created": "Guruh {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Guruh saqlandi",
+      "deleted": "{{ param }}- Guruh o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Guruhni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Guruh"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "yil": "Yil",
+      "yunalish": "Yunalish"
+    }
+  }
+}

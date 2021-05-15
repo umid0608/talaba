@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="talaba">
+      <h2 data-cy="talabaDetailsHeading"><span jhiTranslate="talabaApp.talaba.detail.title">Talaba</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ talaba.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.talaba.ism">Ism</span></dt>
+        <dd>
+          <span>{{ talaba.ism }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.talaba.familiya">Familiya</span></dt>
+        <dd>
+          <span>{{ talaba.familiya }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.talaba.sharif">Sharif</span></dt>
+        <dd>
+          <span>{{ talaba.sharif }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.talaba.tugilganKun">Tugilgan Kun</span></dt>
+        <dd>
+          <span>{{ talaba.tugilganKun | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="talabaApp.talaba.guruh">Guruh</span></dt>
+        <dd>
+          <div *ngIf="talaba.guruh">
+            <a [routerLink]="['/guruh', talaba.guruh?.id, 'view']">{{ talaba.guruh?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/talaba', talaba.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-talaba-heading" data-cy="TalabaCreateUpdateHeading" jhiTranslate="talabaApp.talaba.home.createOrEditLabel">
+        Create or edit a Talaba
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.talaba.ism" for="field_ism">Ism</label>
+          <input type="text" class="form-control" name="ism" id="field_ism" data-cy="ism" formControlName="ism" />
+          <div *ngIf="editForm.get('ism')!.invalid && (editForm.get('ism')!.dirty || editForm.get('ism')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ism')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.talaba.familiya" for="field_familiya">Familiya</label>
+          <input type="text" class="form-control" name="familiya" id="field_familiya" data-cy="familiya" formControlName="familiya" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.talaba.sharif" for="field_sharif">Sharif</label>
+          <input type="text" class="form-control" name="sharif" id="field_sharif" data-cy="sharif" formControlName="sharif" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.talaba.tugilganKun" for="field_tugilganKun">Tugilgan Kun</label>
+          <div class="input-group">
+            <input
+              id="field_tugilganKun"
+              data-cy="tugilganKun"
+              type="text"
+              class="form-control"
+              name="tugilganKun"
+              ngbDatepicker
+              #tugilganKunDp="ngbDatepicker"
+              formControlName="tugilganKun"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="tugilganKunDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="talabaApp.talaba.guruh" for="field_guruh">Guruh</label>
+          <select class="form-control" id="field_guruh" data-cy="guruh" name="guruh" formControlName="guruh">
+            <option *ngIf="!editForm.get('guruh')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="guruhOption.id === editForm.get('guruh')!.value?.id ? editForm.get('guruh')!.value : guruhOption"
+              *ngFor="let guruhOption of guruhsSharedCollection; trackBy: trackGuruhById"
+            >
+              {{ guruhOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['guruh'])!.invalid && (editForm.get(['guruh'])!.dirty || editForm.get(['guruh'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['guruh'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

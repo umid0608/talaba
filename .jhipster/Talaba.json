@@ -1,0 +1,41 @@
+{
+  "name": "Talaba",
+  "fields": [
+    {
+      "fieldName": "ism",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "familiya",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sharif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tugilganKun",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "guruh",
+      "otherEntityRelationshipName": "talaba",
+      "relationshipValidateRules": "required",
+      "relationshipName": "guruh"
+    }
+  ],
+  "entityTableName": "talaba",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210515151514"
+}

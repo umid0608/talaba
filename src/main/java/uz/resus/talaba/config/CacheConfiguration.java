@@ -48,6 +48,9 @@ public class CacheConfiguration {
             createCache(cm, uz.resus.talaba.domain.User.class.getName());
             createCache(cm, uz.resus.talaba.domain.Authority.class.getName());
             createCache(cm, uz.resus.talaba.domain.User.class.getName() + ".authorities");
+            createCache(cm, uz.resus.talaba.domain.Talaba.class.getName());
+            createCache(cm, uz.resus.talaba.domain.Guruh.class.getName());
+            createCache(cm, uz.resus.talaba.domain.Yunalish.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

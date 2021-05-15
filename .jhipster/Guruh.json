@@ -1,0 +1,34 @@
+{
+  "name": "Guruh",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "yil",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "yunalish",
+      "otherEntityRelationshipName": "guruh",
+      "relationshipValidateRules": "required",
+      "relationshipName": "yunalish"
+    }
+  ],
+  "entityTableName": "guruh",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210515151515"
+}
