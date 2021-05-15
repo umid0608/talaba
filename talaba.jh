@@ -1,0 +1,21 @@
+entity Talaba{
+  ism String required
+    familiya String
+    sharif String
+    tugilganKun LocalDate
+}
+
+entity Guruh{
+  nom String required
+    yil Integer required
+     
+}
+entity Yunalish{
+  nom String
+    kod String
+}
+
+relationship ManyToOne{
+  Guruh{yunalish required} to Yunalish,
+    Talaba{guruh required} to Guruh
+}
